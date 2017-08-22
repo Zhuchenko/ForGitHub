@@ -1,0 +1,33 @@
+﻿body {
+    font: 14px helvetica neue, helvetica, arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+.listTextItem {
+    white-space: nowrap;
+    width: 600px;
+    overflow: hidden;
+    padding: 7px;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+.textTwoLines {
+    height: 40px;
+}
+
+.withMargin {
+    margin: 15px;
+}
+
+section{
+    width: 700px;
+    margin-left:300px;
+}

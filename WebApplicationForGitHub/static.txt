@@ -1,0 +1,5 @@
+﻿{
+	"token": "cd917de710844e4ff925976c0f510d4b11ab437f",
+	"owner": "Confirmit",
+	"repo": "Portal"
+}
