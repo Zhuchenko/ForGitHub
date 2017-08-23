@@ -89,9 +89,6 @@
     <Content Include="issues.html" />
     <Content Include="notifications.html" />
     <Content Include="notifications.js" />
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include=".bin\node.cmd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -101,7 +98,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="code.js" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="static.txt" />
