@@ -1,5 +1,5 @@
 ﻿{
-	"token": "someToken",
+	"token": "f8d9e3f77e2663219082c5cf34a10083d14007ec",
 	"owner": "Confirmit",
 	"repo": "Portal"
 }

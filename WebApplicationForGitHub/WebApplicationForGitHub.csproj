@@ -81,15 +81,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="commits.js" />
+    <Content Include="code.js" />
     <Content Include="images\assign.png" />
     <Content Include="images\mention.png" />
-    <Content Include="issues.js" />
-    <Content Include="commits.html" />
-    <Content Include="issues.html" />
-    <Content Include="notifications.html" />
-    <Content Include="notifications.js" />
     <None Include=".bin\node.cmd" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

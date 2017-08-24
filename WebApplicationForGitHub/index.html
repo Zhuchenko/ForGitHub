@@ -10,12 +10,15 @@
 
 <body>
     <header>
-        <nav id="basic-tab-bar" class="mdc-tab-bar">
-            <a class="mdc-tab <!--mdc-tab--active-->" href="/issues.html">Issues</a>
-            <a class="mdc-tab" href="/commits.html">Commits</a>
-            <a class="mdc-tab" href="/notifications.html">Notifications</a>
+        <nav id="tab-bar" class="mdc-tab-bar">
+            <a id="issuesLink" class="mdc-tab" href="/issues">Issues</a>
+            <a id="commitsLink" class="mdc-tab" href="/commits">Commits</a>
+            <a id="notificationsLink" class="mdc-tab" href="/notifications">Notifications</a>
             <span class="mdc-tab-bar__indicator"></span>
         </nav>
     </header>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="code.js"></script>
 </body>
 </html>
