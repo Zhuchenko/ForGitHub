@@ -81,7 +81,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="code.js" />
+    <Content Include="Scripts\code.js" />
     <Content Include="images\assign.png" />
     <Content Include="images\mention.png" />
     <None Include=".bin\node.cmd" />
@@ -96,7 +96,11 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="info.js" />
+    <Content Include="Scripts\graphic.js" />
+    <Content Include="Scripts\info.js" />
+    <Content Include="Scripts\request.js" />
+    <Content Include="Scripts\responseHandler.js" />
+    <Content Include="Scripts\workingWithDOM.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
