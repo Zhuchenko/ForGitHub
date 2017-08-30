@@ -20,53 +20,51 @@ function Main() {
         grp.clear();
         grp.checkTabs(typeOfTab);
 
-        let useful = new UsefulInfo();
-        let url = useful.getUrl(typeOfTab);
-        let doAfter = useful.getDoAfter(typeOfTab);
-
-        let rqs = new Request();
-        rqs.get(url)
-            .then(function (response) {
-                doAfter(response);
-            });
+        switch (typeOfTab) {
+            case "issues":
+                issues();
+                break;
+            case "commits":
+                commits();
+                break;
+            case "notifications":
+                notifications();
+                break;
+            default:
+                alert('undefined type of tag');
+        }
     };
 }
 
-function UsefulInfo() {
-    this.getUrl = function (type) {
-        let url = "https://api.github.com/";
+function issues() {
+    let url = "https://api.github.com/" + 'repos/' + info.owner + '/' + info.repo + '/issues';
 
-        if (type === 'issues') {
-            url += 'repos/' + info.owner + '/' + info.repo + '/issues';
-        }
+    let rqs = new Request();
+    rqs.get(url)
+        .then(function (response) {
+            let res = new ResponseHandler();
+            res.createListOfIssues(response);
+        });
+}
 
-        if (type === 'commits') {
-            url += 'repos/' + info.owner + '/' + info.repo + '/commits';
-        }
+function commits() {
+    let url = "https://api.github.com/" + 'repos/' + info.owner + '/' + info.repo + '/commits';
 
-        if (type === 'notifications') {
-            url += 'notifications';
-        }
+    let rqs = new Request();
+    rqs.get(url)
+        .then(function (response) {
+            let res = new ResponseHandler();
+            res.createListOfCommits(response);
+        });
+}
 
-        return url;
-    };
+function notifications() {
+    let url = "https://api.github.com/" + 'notifications';
 
-    this.getDoAfter = function (type) {
-        let res = new ResponseHandler();
-        let doAfter;
-
-        if (type === 'issues') {
-            doAfter = res.createListOfIssues;
-        }
-
-        if (type === 'commits') {
-            doAfter = res.createListOfCommits;
-        }
-
-        if (type === 'notifications') {
-            doAfter = res.createListOfNotifications;
-        }
-
-        return doAfter;
-    };
+    let rqs = new Request();
+    rqs.get(url)
+        .then(function (response) {
+            let res = new ResponseHandler();
+            res.createListOfNotifications(response);
+        });
 }
