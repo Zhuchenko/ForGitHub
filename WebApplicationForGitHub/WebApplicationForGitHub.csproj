@@ -81,7 +81,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\code.js" />
+    <Content Include="Scripts\document.js" />
     <Content Include="images\assign.png" />
     <Content Include="images\mention.png" />
     <None Include=".bin\node.cmd" />
@@ -98,6 +98,7 @@
     <Content Include="index.html" />
     <Content Include="Scripts\graphic.js" />
     <Content Include="Scripts\info.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\request.js" />
     <Content Include="Scripts\responseHandler.js" />
     <Content Include="Scripts\workingWithDOM.js" />

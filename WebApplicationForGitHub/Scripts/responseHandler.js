@@ -2,6 +2,9 @@
     let grp = new GraphicHandler();
 
     this.createListOfIssues = function (response) {
+        if (isEmpty(response))
+            return;
+
         let list = new Array(10);
 
         let len = response.length;
@@ -26,6 +29,9 @@
     };
 
     this.createListOfCommits = function (response) {
+        if (isEmpty(response))
+            return;
+
         let list = new Array(10);
 
         let len = response.length;
@@ -45,6 +51,9 @@
     };
 
     this.createListOfNotifications = function (response) {
+        if (isEmpty(response))
+            return;
+
         let list = new Array(10);
 
         let len = response.length;
@@ -64,4 +73,14 @@
 
         grp.showTextListWithAvatar(list);
     }
+
+    function isEmpty(response) {
+        if (response.length === 0)
+        {
+            grp.showMessage('List is empty');
+            return true;
+        }
+
+        return false;
+    };
 }

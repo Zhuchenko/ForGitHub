@@ -1,5 +1,34 @@
 ﻿function GraphicHandler() {
     let worker = new WorkWithDOM();
+    
+    this.showProgressBar = function () {
+        worker.createElement('figure', 'figure');
+
+        worker.createElement('div', 'progressbar', 'figure');
+        worker.addAttribute('progressbar', 'role', 'progressbar');
+        worker.addClassToElement('progressbar', 'mdc-linear-progress');
+        worker.addClassToElement('progressbar', 'mdc-linear-progress--indeterminate');
+
+        worker.createElement('div', 'div-buffering-dots', 'progressbar');
+        worker.addClassToElement('div-buffering-dots', 'mdc-linear-progress__buffering-dots');
+
+        worker.createElement('div', 'div-buffer', 'progressbar');
+        worker.addClassToElement('div-buffer', 'mdc-linear-progress__buffer');
+
+        worker.createElement('div', 'div-primary-bar', 'progressbar');
+        worker.addClassToElement('div-primary-bar', 'mdc-linear-progress__bar');
+        worker.addClassToElement('div-primary-bar', 'mdc-linear-progress__primary-bar');
+
+        worker.createElement('span', 'span-for-primary-bar', 'div-primary-bar');
+        worker.addClassToElement('span-for-primary-bar', 'mdc-linear-progress__bar-inner');
+
+        worker.createElement('div', 'div-secondary-bar', 'progressbar');
+        worker.addClassToElement('div-secondary-bar', 'mdc-linear-progress__bar');
+        worker.addClassToElement('div-secondary-bar', 'mdc-linear-progress__secondary-bar');
+
+        worker.createElement('span', 'span-for-secondary-bar', 'div-secondary-bar');
+        worker.addClassToElement('span-for-secondary-bar', 'mdc-linear-progress__bar-inner');
+    };
 
     this.showTextList = function (list) {
         worker.createElement('section', 'section');
@@ -63,8 +92,18 @@
         i++;
     };
 
+    this.showMessage = function (text) {
+        worker.createElement('section', 'section');
+
+        worker.createElement('p', 'text', 'section');
+        worker.addAttribute('text', 'innerText', text);
+        worker.addClassToElement('text', 'mds-typography--headline');
+        worker.addClassToElement('text', 'center');
+    };
+
     this.clear = function () {
         worker.removeElement('section');
+        worker.removeElement('figure');
     };
 
     this.checkTabs = function (activeTab) {
