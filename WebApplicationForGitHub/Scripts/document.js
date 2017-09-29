@@ -36,7 +36,5 @@ function common(url, typeOfTag) {
     let grp = new GraphicHandler();
     grp.showProgressBar();
 
-
-
     main[typeOfTag]();
 }

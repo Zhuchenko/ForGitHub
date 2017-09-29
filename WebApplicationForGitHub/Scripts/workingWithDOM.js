@@ -1,4 +1,6 @@
 ﻿function WorkWithDOM() {
+    let self = this;
+
     this.removeElement = function (id) {
         let element = document.getElementById(id);
         if (element) {
@@ -39,5 +41,67 @@
     this.addAttribute = function (id, name, value) {
         let element = document.getElementById(id);
         element[name] = value;
+    };
+
+    this.addAttributeOnchande = function (id, func) {
+        let element = document.getElementById(id);
+        element.onchange = func;
+    };
+
+    this.unselectItem = function (id) {
+        let element = document.getElementById(id);
+        if (element) {
+            element.selected = false;
+            return true;
+        }
+        return false;
+    }
+
+    this.copy = function () {
+        let index = this.id.slice(-1);
+
+        let link = document.getElementById('link' + index).href;
+
+        self.createElement('input', 'textForCopying');
+        self.addAttribute('textForCopying', 'value', link)
+
+        document.querySelector('#textForCopying').select();
+        document.execCommand('copy');
+
+        self.removeElement('textForCopying');
+    }
+
+    this.getAllSelectedItems = function (id) {
+        let len = 50;
+        let list = new Array(len);
+        let i = 0;
+        let successful = 0;
+        while (i < len) {
+            let element = document.getElementById(id + i);
+            if (!element)
+                break;
+            if (element.selected) {
+                list[successful] = element.innerText;
+                successful++;
+            }
+            i++;
+        }
+        list.length = successful;
+        return list;
+    };
+
+    this.getSelectedItem = function (id) {
+        let len = 50;
+        let result;
+        let i = 0;
+        while (i < len) {
+            let element = document.getElementById(id + i);
+            if (element.selected) {
+                result = element.innerText;
+                break;
+            }
+            i++;
+        }
+        return result;
     };
 }

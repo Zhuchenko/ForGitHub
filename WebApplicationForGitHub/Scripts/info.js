@@ -1,5 +1,5 @@
 ﻿var info = {
-    "token": "f2d8e90aa0d65dfb3b4dbe9842cf1ae25e0f697a",
-	"owner": "Confirmit",
-	"repo": "Portal"
+    "token": "1f691389411d467566eabc29c6e980e1fe0fd464",
+	"owner": "Zhuchenko",
+	"repo": "Queue"
 };
