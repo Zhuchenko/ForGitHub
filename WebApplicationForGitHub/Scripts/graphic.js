@@ -1,6 +1,5 @@
 ﻿function GraphicHandler() {
     let worker = new WorkWithDOM();
-    let forOnchange;
     
     this.showProgressBar = function () {
         worker.createElement('figure', 'figure');
@@ -136,9 +135,7 @@
         forOnchange = res;
 
         showLabels(labels);
-        showMilestones(milestones);   
-
-        res.createIssuesToShow();
+        showMilestones(milestones);  
     };
 
     function showLabels(list) {
@@ -161,16 +158,16 @@
 
         worker.addAttributeOnchande('milestone', optionProcessor);
 
-        worker.createElement('option', 'milestone0', 'milestone');
-        worker.addAttribute('milestone0', 'innerText', 'no object');
-        worker.addAttribute('milestone0', 'selected', true);
+        worker.createElement('option', 'defaultmilestone', 'milestone');
+        worker.addAttribute('defaultmilestone', 'innerText', 'no object');
+        worker.addAttribute('defaultmilestone', 'selected', true);
 
-        worker.createElement('option', 'milestone1', 'milestone');
-        worker.addAttribute('milestone1', 'innerText', 'Issues no milestone');
+        worker.createElement('option', 'nomilestone', 'milestone');
+        worker.addAttribute('nomilestone', 'innerText', 'Issues no milestone');
 
         for (let i = 0, len = list.length; i < len; i++) {
-            worker.createElement('option', 'milestone' + (i + 2), 'milestone');
-            worker.addAttribute('milestone' + (i + 2), 'innerText', list[i].name);
+            worker.createElement('option', 'milestone' + list[i].number, 'milestone');
+            worker.addAttribute('milestone' + list[i].number, 'innerText', list[i].title);
         }
     }
 
@@ -186,7 +183,8 @@
                 }
             }
         }
-        forOnchange.createIssuesToShow();
+        let main = new Main();
+        main.getIssues();
     }
 
     this.showMessage = function (text) {

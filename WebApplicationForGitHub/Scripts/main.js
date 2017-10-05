@@ -1,6 +1,7 @@
 ﻿function Main() {
     let res = new ResponseHandler();
     let grp = new GraphicHandler();
+    let worker = new WorkWithDOM();
     let self = this;
 
     this.preparations = function (activeTab) {
@@ -9,15 +10,42 @@
     };
     
     this.issues = function () {
-        let url = "https://api.github.com/" + 'repos/' + info.owner + '/' + info.repo + '/issues';
+        getOptions();
+    };
 
+    this.getIssues = function () {
+        let url = "https://api.github.com/" + 'repos/' + info.owner + '/' + info.repo + '/issues?state=open';
+
+        let labels = worker.getAllSelectedItems('label');
+        
+        if (labels.length !== 0) {
+            if (labels[0] !== 'Unlabeled') {
+                url += '&labels=' + labels[0];
+                for (let i = 1, l = labels.length; i < l; i++) {
+                    url += ',' + labels[i];
+                }
+            }
+        }
+
+        let milestone = worker.getSelectedItem('milestone');
+        
+        if (milestone !== 'no object') {
+            url += '&milestone=';
+            if (milestone === 'Issues no milestone') {
+                url += 'none';
+            }
+            else {
+                url += milestone.number;
+            }
+
+        }
+        
         let rqs = new Request();
         rqs.get(url)
             .then(function (response) {
-                res.saveListOfIssues(response);
-                getOptions();
+                res.showListOfIssues(response);
             });
-    };
+    }
 
     this.commits = function() {
         let url = "https://api.github.com/" + 'repos/' + info.owner + '/' + info.repo + '/commits';
@@ -62,6 +90,7 @@
                 rqs.get(url + 'milestones')
                     .then(function (milestones) {
                         res.createListsOfOptions(labels, milestones);
+                        self.getIssues();
                     });
             });
     }

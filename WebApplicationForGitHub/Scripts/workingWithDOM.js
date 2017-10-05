@@ -90,18 +90,27 @@
         return list;
     };
 
-    this.getSelectedItem = function (id) {
-        let len = 50;
-        let result;
+    this.getSelectedItem = function (id) { 
+        let element = document.getElementById('default' + id);
+        if (element.selected) {
+            return element.innerText;
+        }
+
+        element = document.getElementById('no' + id);
+        if (element.selected) {
+            return element.innerText;
+        }
+
         let i = 0;
+        let len = 100;
         while (i < len) {
-            let element = document.getElementById(id + i);
-            if (element.selected) {
-                result = element.innerText;
-                break;
+            element = document.getElementById(id + i);
+            if (element) {
+                if (element.selected) {
+                    return element.innerText.replace(id, '');
+                }
             }
             i++;
         }
-        return result;
     };
 }
